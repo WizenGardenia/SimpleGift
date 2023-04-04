@@ -1,0 +1,151 @@
+@import url('https://fonts.googleapis.com/css2?family=Pangolin&display=swap');
+/*重置浏览器样式*/
+* {
+    margin: 0;
+    padding: 0;
+}
+/*
+    使主体居中
+    vw：视窗宽度的百分比（1vw 代表视窗的宽度为 1%）
+    vh：视窗高度的百分比
+*/
+body {
+    height: 100vh;
+    width: 100vw;
+    background-image: url('img/room_午.jpg');
+    background-size: 100vw 100vh; 
+    background-attachment: fixed;
+    font-family: 'Pangolin', cursive;
+    font-size: 1vmin;
+    /*弹性布局*/
+    display: flex;
+    /*设置flex子项在每个flex行的交叉轴上的中心对齐，交叉轴方向为column，即垂直方向**/
+    align-items: center;
+    /*设置flex子项在主轴上的中心对齐*/
+    justify-content: center;
+}
+/*
+使用相对定位（什么时候用相对定位或绝对定位？在文档流中相对定位的元素占有位置，而且会影响后面的元素（块元素、行内块元素），比如两个div并排，另外一个会换行。而绝对定位就是把该元素从文档流中踢出，不会占用文档流的位置，也不会影响后面的元素。）
+vmin：当前 vw 和 vh 中较小的一个值
+vmax：当前 vw 和 vh 中较大的一个值
+*/
+.container {
+    position: relative;
+    top: 0vmin;
+}
+/*相对定位，并设置背景色和大小*/
+.envelope {
+    position: relative;
+    background: #33CCCC;
+    height: 30vmin;
+    width: 48vmin;
+}
+
+.cover {
+    position: absolute;
+    height: 0;
+    width: 0;
+
+    border-bottom: 15vmin solid #b5f5eb;
+    border-left: 24vmin solid transparent;
+    border-right: 24vmin solid transparent;
+    top: 15vmin;
+    z-index: 3;
+}
+
+.cover::after { /*left triangle*/
+    position: absolute;
+    content: '';
+    border-left: 24.5vmin solid #bbf8ff;
+    border-bottom: 15vmin solid transparent;
+    border-top: 15vmin solid transparent;
+    top: -15vmin;
+    left: -24vmin;
+}
+
+.cover::before {
+    position: absolute;
+    content: '';
+    border-right: 24.5vmin solid #bbf8ff;
+    border-bottom: 15vmin solid transparent;
+    border-top: 15vmin solid transparent;
+    top: -15vmin;
+    left: -0.5vmin;
+}
+
+@keyframes open {
+    100% {
+        transform: rotatex(180deg);
+    }
+}
+/*信件合上的动画*/
+@keyframes open-rev {
+    from {
+        transform: rotatex(-180deg);
+    }
+}
+
+.lid {
+    position: absolute;
+    height: 0;
+    width: 0;
+
+    border-top: 15vmin solid #33ffc2;
+    border-left: 24vmin solid transparent;
+    border-right: 24vmin solid transparent;
+
+    top: 0;
+    /*设置旋转元素的基点位置，为盒子的顶部边缘*/
+    transform-origin: top;
+    animation: open-rev 2s;
+}
+
+.container:hover .lid {
+    animation: open 0.5s;
+    animation-fill-mode: forwards;
+}
+
+
+
+.card {
+    position: absolute;
+    /*白色的卡片*/
+    background: white;
+    height: 25vmin;
+    width: 43vmin;
+    display: flex;
+    /*设置div水平显示*/
+    flex-direction: column;
+    /*设置flex子项在每个flex行的交叉轴上的中心对齐，交叉轴方向为column，即垂直方向**/
+    align-items: center;
+    /*设置flex子项在主轴上的中心对齐*/
+    justify-content: center;
+    left: 2.5vmin;
+    top: 0vmin;
+    /*卡片落回动画*/
+    animation: slide-rev 0.2s ease-out;
+}
+
+/*卡片划出信封*/
+@keyframes slide {
+    100% {
+        transform: translatey(-15vmin);
+        z-index: 2;
+    }
+}
+/*卡片落回信封*/
+@keyframes slide-rev {
+    from {
+        transform: translatey(-15vmin);
+    }
+}
+
+.container:hover .card {
+    /*卡片划出动画*/
+    animation: slide 0.2s;
+    animation-delay: 0.5s;
+    /*把卡面动画地从一个地方移动到另一个地方，并让它停留在那里。*/
+    animation-fill-mode: forwards;
+}
+
+
