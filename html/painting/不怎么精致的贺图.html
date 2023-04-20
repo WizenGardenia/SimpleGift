@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>不怎么精致的贺图</title>
+    <link rel="stylesheet" href="painting.css">
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+
+
+<body>
+    <div class = "mypainting">
+        <img src = 'img/picture.png' id = 'paint' style="display: none;width: 80%;" onclick="outimg()"/>
+    </div>
+
+    <div class = "mybutton">
+        <a herf = "#"><p class="message" >你的小蛋糕到啦，请查收</p></a>
+    </div>
+
+
+
+
+    <script type="text/javascript">
+        
+
+        const mybutton = document.querySelectorAll('a');
+        mybutton.forEach(btn=>{
+            btn.addEventListener('click',function(e){
+                let x = e.clientX - e.target.offsetLeft;
+                let y = e.clientY - e.target.offsetTop;
+                
+                let ripples = document.createElement('span');
+                ripples.style.left = x + 'px';
+                ripples.style.top = y + 'px';
+                this.appendChild(ripples);
+
+                setTimeout(()=>{
+                    ripples.remove()
+                },500);
+                $('#paint').fadeIn(1000);
+
+            })
+        })
+
+        function disimg(){
+            $('#paint').fadeIn(1000);
+        }
+
+        function outimg(){
+            $('#paint').fadeOut(1000);
+        }
+    </script>    
+
+</body>
+</html>

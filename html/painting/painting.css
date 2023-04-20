@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Pangolin&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap');
+/*重置浏览器样式*/
+* {
+    margin: 0;
+    padding: 0;
+}
+/*
+    使主体居中
+    vw：视窗宽度的百分比（1vw 代表视窗的宽度为 1%）
+    vh：视窗高度的百分比
+*/
+body {
+    height: 100vh;
+    width: 100vw;
+    background-image: url('img/room_夜.jpg');
+    background-size: 100vw 100vh; 
+    background-attachment: fixed;
+    font-family: 'Pangolin', cursive;
+    font-size: 1vmin;
+    /*弹性布局*/
+    display: flex;
+    /*设置flex子项在每个flex行的交叉轴上的中心对齐，交叉轴方向为column，即垂直方向**/
+    align-items: center;
+    /*设置flex子项在主轴上的中心对齐*/
+    justify-content: center;
+}
+
+.mypainting{
+    position: fixed;
+    text-align: center;
+    z-index: 10;
+    
+}
+
+
+
+.mybutton{
+    position: fixed;
+    z-index: 0;
+}
+
+a{
+    position: relative;
+    display: inline-block;
+    padding: 12px 36px;
+    margin: 10px 0;
+    color: #fff;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 18px;
+    letter-spacing: 2px;
+    border-radius: 40px;
+    overflow: hidden;
+    background: linear-gradient(90deg,#0162c8,#55e7fc);
+
+}
+
+span{
+    position: absolute;
+    background: #fff;
+    transform: translate(-50%,-50%);
+    pointer-events: none;
+    border-radius: 50%;
+    animation: animate 1s linear infinite;
+}
+@keyframes animate{
+    0%
+    {
+        width: 0px;
+        height: 0px;
+        opacity: 0.5;
+
+    }
+    100%
+    {
+        width: 500px;
+        height: 500px;
+        opacity: 0;
+    }
+}

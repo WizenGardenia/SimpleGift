@@ -148,4 +148,9 @@ vmax：当前 vw 和 vh 中较大的一个值
     animation-fill-mode: forwards;
 }
 
-
+.myCard{
+    position: fixed;
+    text-align: center;
+    z-index: 10;
+    
+}

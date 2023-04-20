@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>envelope</title>
+    <link rel="stylesheet" href="envelope.css">
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+<body>
+
+    <div class="container">
+        <div class="envelope"></div>
+        <div class="card" id="test" onclick="disimgCard()">
+            <h1 class="message" >Click on the Card to View the Content❤</h1>
+        </div>
+        <div class="cover"></div>
+        <div class="lid"></div>
+    </div>
+
+    <div class = "myCard">
+        <img src = 'img/card.png' id = 'Card' style="display: none;width: 60%;" onclick="outimgCard()"/>
+    </div>
+
+    <script type="text/javascript">
+        function disimgCard(){
+            $('#Card').fadeIn(1000);
+        }
+
+        function outimgCard(){
+            $('#Card').fadeOut(1000);
+        }
+    </script>  
+
+</body>
+</html>
