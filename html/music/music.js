@@ -59,7 +59,7 @@ function draw(){
     const len=dataArray.length / 2; //条的数量，取一半，前半部分（低频范围就好，高频部分人耳几乎听不到，看不到波形）
     const barWidth=width / len / 2; //条的宽度
     ctx.fillStyle='#CCFFFF';
-    ctx.globalAlpha = 0.7;
+    ctx.globalAlpha = 0.5;
     // 循环绘制
     for(let i=0;i<len;i++){
         const data=dataArray[i];
